@@ -1,0 +1,98 @@
+{
+  "nodes": {
+    "cap1_republica_start": {
+      "id": "cap1_republica_start",
+      "location": "República no Butantã",
+      "baseDescription": "O quarto está uma bagunça, pilhas de livros de História se misturam com embalagens vazias. A luz amarela do poste lá fora ilumina fracamente a mesa, onde a carta de sua tia-avó Maria repousa. O papel parece antigo, as bordas levemente úmidas, exalando um cheiro de rio e ferrugem. As palavras 'temer nada' e 'se preocupe com nada' ecoam na sua cabeça.",
+      "orelhaoVisivel": false,
+      "npcsPresentes": ["mecanica", "muro"],
+      "options": [
+        {
+          "id": "A",
+          "text": "Arrumar a mala e ir sozinho para a Rodoviária.",
+          "nextId": "cap1_rodoviaria_sozinho"
+        },
+        {
+          "id": "B",
+          "text": "Bater na porta da colega 'Mecânica' e pedir companhia para a viagem.",
+          "nextId": "cap1_rodoviaria_mecanica"
+        },
+        {
+          "id": "C",
+          "text": "Conversar com o 'Muro'.",
+          "dialogueTarget": "muro"
+        },
+        {
+          "id": "D",
+          "text": "Conversar com a 'Mecânica'.",
+          "dialogueTarget": "mecanica"
+        }
+      ],
+      "allowFourthOption": true,
+      "fourthOptionConstraints": "O jogador está no quarto e deve decidir como viajar para Botucatu (sozinho ou com um dos colegas). Se tentar ignorar a missão, sofrerá dano de sanidade pelo Vazio e deverá ser redirecionado para tentar viajar novamente."
+    },
+    "cap1_rodoviaria_sozinho": {
+      "id": "cap1_rodoviaria_sozinho",
+      "location": "Terminal Rodoviário Tietê",
+      "baseDescription": "O terminal está um caos. Pessoas correndo, o noticiário na TV do bar fala repetidamente sobre o sequestro do pai do Romário. Ninguém prestaria atenção se você desaparecesse aqui. O ônibus para Botucatu sai em 20 minutos.",
+      "orelhaoVisivel": true,
+      "npcsPresentes": [],
+      "options": [
+        {
+          "id": "A",
+          "text": "Comprar a passagem imediatamente.",
+          "nextId": "cap1_onibus"
+        },
+        {
+          "id": "B",
+          "text": "Comprar um lanche antes de embarcar.",
+          "nextId": "cap1_onibus_lanche"
+        }
+      ],
+      "allowFourthOption": true,
+      "fourthOptionConstraints": "O jogador está na rodoviária caótica. Magia não existe. Ações que atrasem demais a viagem drenam sanidade."
+    },
+    "cap1_rodoviaria_mecanica": {
+      "id": "cap1_rodoviaria_mecanica",
+      "location": "Terminal Rodoviário Tietê",
+      "baseDescription": "Você viajou para a rodoviária com a Mecânica. Ela está com sua jaqueta de couro surrada e mascando chiclete, observando o caos do terminal. O noticiário na TV fala sobre o sequestro do pai do Romário. Ela diz: 'Espero que essa tia seja rica mesmo'.",
+      "orelhaoVisivel": true,
+      "npcsPresentes": ["mecanica"],
+      "options": [
+        {
+          "id": "A",
+          "text": "Comprar as passagens enquanto ela vigia as malas.",
+          "nextId": "cap1_onibus_mecanica"
+        },
+        {
+          "id": "B",
+          "text": "Conversar com a Mecânica sobre a viagem.",
+          "dialogueTarget": "mecanica"
+        }
+      ],
+      "allowFourthOption": true,
+      "fourthOptionConstraints": "O jogador está acompanhado da Mecânica. Ela tem Agilidade máxima e Carisma alto, pode ajudar a furar filas ou conseguir vantagens."
+    },
+    "cap1_rodoviaria_muro": {
+      "id": "cap1_rodoviaria_muro",
+      "location": "Terminal Rodoviário Tietê",
+      "baseDescription": "Você está na rodoviária com o Muro. Ele carrega as malas sem esforço, abrindo caminho pela multidão caótica apenas com sua presença física. O ônibus sai em breve.",
+      "orelhaoVisivel": true,
+      "npcsPresentes": ["muro"],
+      "options": [
+        {
+          "id": "A",
+          "text": "Ir comprar as passagens.",
+          "nextId": "cap1_onibus_muro"
+        },
+        {
+          "id": "B",
+          "text": "Conversar com o Muro sobre a multidão.",
+          "dialogueTarget": "muro"
+        }
+      ],
+      "allowFourthOption": true,
+      "fourthOptionConstraints": "O jogador está acompanhado do Muro. Ele tem Força máxima e pode resolver problemas físicos e carregar peso."
+    }
+  }
+}
