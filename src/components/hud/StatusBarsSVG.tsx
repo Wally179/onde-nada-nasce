@@ -448,27 +448,24 @@ export default function StatusBarsSVG({
           HP BAR (RED) — clipped by hpPercent
           ═══════════════════════════════════════════════════ */}
       <g clipPath="url(#clip-hp-bar)">
-        <rect x="135.226" y="15.2425" width="3.34852" height="15.2362" fill="#D04648"/>
-        <rect x="138.574" y="22.8606" width="167.426" height="7.61809" fill="#D04648"/>
-        <rect x="138.574" y="15.2425" width="167.426" height="7.61809" fill="#D2AA99"/>
+        <rect x="135.226" y="22.8606" width="198.07" height="7.61809" fill="#D04648"/>
+        <rect x="135.226" y="15.2425" width="198.07" height="7.61809" fill="#D2AA99"/>
       </g>
 
       {/* ═══════════════════════════════════════════════════
           STAMINA BAR (BLUE) — clipped by staminaPercent
           ═══════════════════════════════════════════════════ */}
       <g clipPath="url(#clip-stamina-bar)">
-        <rect x="135.226" y="53.3297" width="2.76028" height="15.2362" fill="#597DCE"/>
-        <rect x="137.986" y="60.9478" width="138.014" height="7.61809" fill="#597DCE"/>
-        <rect x="137.986" y="53.3297" width="138.014" height="7.61809" fill="#6DC2CA"/>
+        <rect x="135.226" y="60.9478" width="198.07" height="7.61809" fill="#597DCE"/>
+        <rect x="135.226" y="53.3297" width="198.07" height="7.61809" fill="#6DC2CA"/>
       </g>
 
       {/* ═══════════════════════════════════════════════════
           SANITY BAR (GREEN) — clipped by sanityPercent
           ═══════════════════════════════════════════════════ */}
       <g clipPath="url(#clip-sanity-bar)">
-        <rect x="135.226" y="91.4207" width="2.5446" height="15.2362" fill="#6DAA2C"/>
-        <rect x="137.77" y="99.0388" width="127.23" height="7.61809" fill="#6DAA2C"/>
-        <rect x="137.77" y="91.4207" width="127.23" height="7.61809" fill="#709775"/>
+        <rect x="135.226" y="99.0388" width="198.07" height="7.61809" fill="#6DAA2C"/>
+        <rect x="135.226" y="91.4207" width="198.07" height="7.61809" fill="#709775"/>
       </g>
 
       {/* ═══════════════════════════════════════════════════

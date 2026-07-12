@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { GameState, PlayerStats, Companion, PlayerCharacter, NpcMemory, DialogueMessage } from '../types/game';
+import { GameState, PlayerStats, Companion, DialogueMessage } from '../types/game';
 
 type GameStore = GameState & {
   // Actions
@@ -9,7 +9,7 @@ type GameStore = GameState & {
   usePayphoneToken: () => boolean;
   setSaveSummary: (summary: string) => void;
   goToNode: (nodeId: string) => void;
-  activateExtraLife: (caculaName: string) => void;
+  activateExtraLife: () => void;
   
   // Dialogue Actions
   enterDialogue: (npcId: string) => void;
@@ -94,7 +94,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
     activeNpcDialogueId: null
   }),
 
-  activateExtraLife: (caculaName: string) => set((state) => {
+  activateExtraLife: () => set((state) => {
     if (state.activeCharacter === 'Cacula') return state;
     
     return {

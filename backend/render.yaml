@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: onde-nada-nasce-api
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: onde-nada-nasce-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CORS_ORIGIN
+        value: "*" # Altere para o seu domínio do Vercel depois
+
+databases:
+  - name: onde-nada-nasce-db
+    plan: free

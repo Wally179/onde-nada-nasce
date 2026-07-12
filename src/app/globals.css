@@ -47,3 +47,18 @@
   z-index: 1;
   box-shadow: 0 0 200px rgba(0,0,0,0.9) inset;
 }
+
+@keyframes flicker {
+  0% { opacity: 0.95; }
+  5% { opacity: 0.85; }
+  10% { opacity: 0.95; }
+  15% { opacity: 1; }
+  50% { opacity: 0.95; }
+  55% { opacity: 0.8; }
+  60% { opacity: 0.95; }
+  100% { opacity: 1; }
+}
+
+.crt-flicker {
+  animation: flicker 0.15s infinite;
+}

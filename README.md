@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Onde Nada Nasce
 
-## Getting Started
+Um projeto de narrativa interativa e RPG baseado em texto, com um sistema de status (HUD) dinâmico e salvamento de progresso.
 
-First, run the development server:
+## 🚀 Tecnologias Utilizadas
+
+- **Frontend:** Next.js, React, Zustand (gerenciamento de estado), e TailwindCSS.
+- **Backend:** Node.js, Express, e banco de dados PostgreSQL.
+- **Ferramentas:** `concurrently` para rodar o frontend e o backend simultaneamente no ambiente de desenvolvimento.
+
+## 📋 Pré-requisitos
+
+- **Node.js** (versão 18 ou superior recomendada)
+- **PostgreSQL** rodando localmente ou em um serviço de nuvem (como Render, Supabase, etc).
+
+## 🛠️ Configuração e Instalação
+
+Siga os passos abaixo para rodar o projeto localmente:
+
+### 1. Instalar as dependências
+
+Você precisará instalar as dependências tanto do frontend (na raiz) quanto do backend:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Instala as dependências do frontend
+npm install
+
+# Instala as dependências do backend
+cd backend
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Configurar Variáveis de Ambiente
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+O backend precisa de acesso ao banco de dados PostgreSQL.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Dentro da pasta `backend`, faça uma cópia do arquivo `.env.example` e renomeie para `.env`.
+2. Abra o arquivo `.env` e preencha a variável `DATABASE_URL` com a string de conexão do seu banco de dados:
 
-## Learn More
+```env
+PORT=3001
+DATABASE_URL=postgres://usuario:senha@host:5432/nome_do_banco
+JWT_SECRET=super_secret_key_change_this_in_production
+CORS_ORIGIN=http://localhost:3000
+```
 
-To learn more about Next.js, take a look at the following resources:
+> **Nota sobre Migrations:** Você não precisa rodar nenhum comando de migration. O backend está configurado para criar automaticamente as tabelas necessárias (`users` e `saves`) sempre que o servidor for iniciado.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 3. Rodar o Projeto
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Volte para a pasta raiz do projeto e execute o comando de desenvolvimento integrado:
 
-## Deploy on Vercel
+```bash
+# (certifique-se de estar na raiz do projeto)
+npm run dev:all
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Esse comando faz o seguinte:
+- Inicia a API (Backend) em `http://localhost:3001`
+- Inicia a Interface (Frontend) em `http://localhost:3000`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver o projeto funcionando!
+
+## 📁 Estrutura do Projeto
+
+- `/src`: Código do frontend (componentes React, páginas do Next.js, store do Zustand).
+- `/backend`: Código do servidor (rotas Express, conexão com banco de dados em `db.js`).
