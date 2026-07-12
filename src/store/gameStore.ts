@@ -16,6 +16,9 @@ type GameStore = GameState & {
   exitDialogue: () => void;
   addDialogueMessage: (npcId: string, message: DialogueMessage) => void;
   updateNpcMemory: (npcId: string, summarizedContext: string) => void;
+  
+  // Cutscenes
+  setHasSeenIntroCutscene: (hasSeen: boolean) => void;
 };
 
 const initialStats: PlayerStats = {
@@ -40,6 +43,7 @@ const initialState: GameState = {
   isInDialogueMode: false,
   activeNpcDialogueId: null,
   npcMemories: {},
+  hasSeenIntroCutscene: false,
 };
 
 export const useGameStore = create<GameStore>((set, get) => ({
@@ -166,4 +170,6 @@ export const useGameStore = create<GameStore>((set, get) => ({
       }
     };
   }),
+
+  setHasSeenIntroCutscene: (hasSeen) => set({ hasSeenIntroCutscene: hasSeen }),
 }));

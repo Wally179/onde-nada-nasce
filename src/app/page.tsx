@@ -7,8 +7,10 @@ import LoginScreen from '../components/screens/LoginScreen';
 import MenuScreen from '../components/screens/MenuScreen';
 import OptionsScreen from '../components/screens/OptionsScreen';
 import GameScreen from '../components/screens/GameScreen';
+import CutscenePlayer from '../components/cutscene/CutscenePlayer';
+import { introCutscene } from '../data/cutscenes/intro';
 
-type ScreenType = 'login' | 'menu' | 'options' | 'game';
+type ScreenType = 'login' | 'menu' | 'options' | 'game' | 'cutscene';
 
 export default function AppOrchestrator() {
   const { isAuthenticated, loadGame, isLoading } = useAuthStore();
@@ -39,7 +41,20 @@ export default function AppOrchestrator() {
     const savedState = await loadGame();
     if (savedState) {
       useGameStore.setState(savedState);
+      
+      if (!savedState.hasSeenIntroCutscene) {
+        setCurrentScreen('cutscene');
+      } else {
+        setCurrentScreen('game');
+      }
+    } else {
+      // Novo jogo, nunca viu a cutscene
+      setCurrentScreen('cutscene');
     }
+  };
+
+  const handleCutsceneComplete = () => {
+    useGameStore.getState().setHasSeenIntroCutscene(true);
     setCurrentScreen('game');
   };
 
@@ -75,6 +90,8 @@ export default function AppOrchestrator() {
       return <OptionsScreen onBack={() => setCurrentScreen('menu')} />;
     case 'game':
       return <GameScreen onMenuClick={() => setCurrentScreen('menu')} />;
+    case 'cutscene':
+      return <CutscenePlayer data={introCutscene} onComplete={handleCutsceneComplete} />;
     default:
       return <LoginScreen onLoginSuccess={handleLoginSuccess} />;
   }

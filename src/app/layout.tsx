@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
+import { Caveat } from 'next/font/google';
 import "./globals.css";
+
+const caveat = Caveat({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-caveat',
+});
 
 export const metadata: Metadata = {
   title: "Onde Nada nasce",
@@ -13,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className="antialiased min-h-screen bg-[url('/assets/backgrounds/main-bg.svg')] bg-cover bg-center">
+      <body className={`${caveat.variable} antialiased min-h-screen bg-[url('/assets/backgrounds/main-bg.svg')] bg-cover bg-center`}>
         {/* Visual overlays for horror effect */}
         <div className="vignette"></div>
         <div className="crt fixed inset-0 pointer-events-none z-50"></div>

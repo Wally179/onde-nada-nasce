@@ -65,6 +65,8 @@ export type GameState = {
   isInDialogueMode: boolean;
   activeNpcDialogueId: string | null;
   npcMemories: Record<string, NpcMemory>;
+  // Cutscenes
+  hasSeenIntroCutscene: boolean;
 };
 
 export type StoryOption = {
