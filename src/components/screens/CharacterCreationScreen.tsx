@@ -53,7 +53,7 @@ export default function CharacterCreationScreen({ onComplete }: CharacterCreatio
           <div className="flex flex-col border border-[#2d372b] p-4 bg-[#0d0f0c]">
             <span className="uppercase tracking-widest text-gray-400 text-sm mb-4">Apresentação / Gênero</span>
             <div className="flex gap-4">
-              {['Masculino', 'Feminino', 'Andrógino'].map(opt => (
+              {['Masculino', 'Feminino', 'Não Binario'].map(opt => (
                 <button
                   key={opt}
                   onClick={() => setGender(opt)}
