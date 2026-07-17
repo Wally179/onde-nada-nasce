@@ -7,12 +7,14 @@ interface AuthState {
   isAuthenticated: boolean;
   isLoading: boolean;
   error: string | null;
+  customGeminiKey: string | null;
   
   // Actions
   login: (token: string, username: string) => void;
   logout: () => void;
   setLoading: (isLoading: boolean) => void;
   setError: (error: string | null) => void;
+  setCustomGeminiKey: (key: string | null) => void;
   
   // Save interactions
   saveGame: (gameState: GameState) => Promise<boolean>;
@@ -24,9 +26,19 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
 export const useAuthStore = create<AuthState>((set, get) => ({
   token: typeof window !== 'undefined' ? localStorage.getItem('token') : null,
   username: typeof window !== 'undefined' ? localStorage.getItem('username') : null,
+  customGeminiKey: typeof window !== 'undefined' ? localStorage.getItem('customGeminiKey') : null,
   isAuthenticated: typeof window !== 'undefined' ? !!localStorage.getItem('token') : false,
   isLoading: false,
   error: null,
+
+  setCustomGeminiKey: (key) => {
+    if (key) {
+      localStorage.setItem('customGeminiKey', key);
+    } else {
+      localStorage.removeItem('customGeminiKey');
+    }
+    set({ customGeminiKey: key });
+  },
 
   login: (token, username) => {
     localStorage.setItem('token', token);
@@ -97,6 +109,31 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     } catch (err) {
       set({ error: err instanceof Error ? err.message : 'Erro ao carregar', isLoading: false });
       return null;
+    }
+  },
+
+  deleteGame: async () => {
+    const { token } = get();
+    if (!token) return false;
+
+    try {
+      set({ isLoading: true, error: null });
+      const response = await fetch(`${API_URL}/saves`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error('Falha ao apagar save');
+      }
+
+      set({ isLoading: false });
+      return true;
+    } catch (err) {
+      set({ error: err instanceof Error ? err.message : 'Erro ao apagar save', isLoading: false });
+      return false;
     }
   }
 }));

@@ -7,10 +7,11 @@ import LoginScreen from '../components/screens/LoginScreen';
 import MenuScreen from '../components/screens/MenuScreen';
 import OptionsScreen from '../components/screens/OptionsScreen';
 import GameScreen from '../components/screens/GameScreen';
+import CharacterCreationScreen from '../components/screens/CharacterCreationScreen';
 import CutscenePlayer from '../components/cutscene/CutscenePlayer';
 import { introCutscene } from '../data/cutscenes/intro';
 
-type ScreenType = 'login' | 'menu' | 'options' | 'game' | 'cutscene';
+type ScreenType = 'login' | 'menu' | 'options' | 'game' | 'cutscene' | 'character-creation';
 
 export default function AppOrchestrator() {
   const { isAuthenticated, loadGame, isLoading } = useAuthStore();
@@ -42,14 +43,25 @@ export default function AppOrchestrator() {
     if (savedState) {
       useGameStore.setState(savedState);
       
-      if (!savedState.hasSeenIntroCutscene) {
+      if (!savedState.hasCreatedCharacter) {
+        setCurrentScreen('character-creation');
+      } else if (!savedState.hasSeenIntroCutscene) {
         setCurrentScreen('cutscene');
       } else {
         setCurrentScreen('game');
       }
     } else {
-      // Novo jogo, nunca viu a cutscene
+      // Novo jogo
+      setCurrentScreen('character-creation');
+    }
+  };
+
+  const handleCharacterCreationComplete = () => {
+    // Após criar o personagem, vai pra cutscene inicial se não viu
+    if (!useGameStore.getState().hasSeenIntroCutscene) {
       setCurrentScreen('cutscene');
+    } else {
+      setCurrentScreen('game');
     }
   };
 
@@ -88,6 +100,8 @@ export default function AppOrchestrator() {
       );
     case 'options':
       return <OptionsScreen onBack={() => setCurrentScreen('menu')} />;
+    case 'character-creation':
+      return <CharacterCreationScreen onComplete={handleCharacterCreationComplete} />;
     case 'game':
       return <GameScreen onMenuClick={() => setCurrentScreen('menu')} />;
     case 'cutscene':

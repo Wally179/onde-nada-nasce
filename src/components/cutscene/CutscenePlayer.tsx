@@ -42,7 +42,7 @@ export default function CutscenePlayer({ data, onComplete }: CutscenePlayerProps
     window.addEventListener('mousemove', showHint);
     window.addEventListener('keydown', onKey);
     return () => {
-      window.removeEventListener('mousemove', onKey);
+      window.removeEventListener('mousemove', showHint);
       window.removeEventListener('keydown', onKey);
       if (skipTimerRef.current) clearTimeout(skipTimerRef.current);
     };

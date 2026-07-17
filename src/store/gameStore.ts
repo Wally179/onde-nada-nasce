@@ -6,10 +6,13 @@ type GameStore = GameState & {
   setCompanion: (companion: Companion) => void;
   updateStats: (updates: Partial<PlayerStats>) => void;
   takeSanityDamage: (amount: number) => void;
+  drainStamina: (amount: number) => void;
   usePayphoneToken: () => boolean;
   setSaveSummary: (summary: string) => void;
   goToNode: (nodeId: string) => void;
   activateExtraLife: () => void;
+  addToInventory: (item: string) => void;
+  removeFromInventory: (item: string) => void;
   
   // Dialogue Actions
   enterDialogue: (npcId: string) => void;
@@ -19,6 +22,11 @@ type GameStore = GameState & {
   
   // Cutscenes
   setHasSeenIntroCutscene: (hasSeen: boolean) => void;
+  setHasCreatedCharacter: (hasCreated: boolean) => void;
+  setPlayerProfile: (profile: { name?: string; gender: string; pronouns: string }) => void;
+  
+  // Game Reset
+  resetToInitialState: () => void;
 };
 
 const initialStats: PlayerStats = {
@@ -44,10 +52,14 @@ const initialState: GameState = {
   activeNpcDialogueId: null,
   npcMemories: {},
   hasSeenIntroCutscene: false,
+  hasCreatedCharacter: false,
+  playerProfile: null,
 };
 
 export const useGameStore = create<GameStore>((set, get) => ({
   ...initialState,
+
+  resetToInitialState: () => set({ ...initialState }),
 
   setCompanion: (companion) => set((state) => {
     let bonusHp = 0;
@@ -81,6 +93,13 @@ export const useGameStore = create<GameStore>((set, get) => ({
     };
   }),
 
+  drainStamina: (amount) => set((state) => ({
+    stats: {
+      ...state.stats,
+      stamina: Math.max(0, state.stats.stamina - amount)
+    }
+  })),
+
   usePayphoneToken: () => {
     const { payphoneTokens } = get();
     if (payphoneTokens > 0) {
@@ -91,6 +110,14 @@ export const useGameStore = create<GameStore>((set, get) => ({
   },
 
   setSaveSummary: (summary) => set({ saveSummary: summary }),
+
+  addToInventory: (item) => set((state) => ({
+    inventory: state.inventory.includes(item) ? state.inventory : [...state.inventory, item]
+  })),
+
+  removeFromInventory: (item) => set((state) => ({
+    inventory: state.inventory.filter(i => i !== item)
+  })),
 
   goToNode: (nodeId) => set({ 
     currentNodeId: nodeId,
@@ -172,4 +199,6 @@ export const useGameStore = create<GameStore>((set, get) => ({
   }),
 
   setHasSeenIntroCutscene: (hasSeen) => set({ hasSeenIntroCutscene: hasSeen }),
+  setHasCreatedCharacter: (hasCreated) => set({ hasCreatedCharacter: hasCreated }),
+  setPlayerProfile: (profile) => set({ playerProfile: profile }),
 }));

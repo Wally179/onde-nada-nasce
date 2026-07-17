@@ -53,20 +53,26 @@ export type NpcMemory = {
   recentMessages: DialogueMessage[]; // Últimas mensagens (max 5 pares)
 };
 
+export interface PlayerProfile {
+  name?: string;
+  gender: string;
+  pronouns: string;
+}
+
 export type GameState = {
   activeCharacter: PlayerCharacter;
   stats: PlayerStats;
-  companion: Companion;
+  companion: Companion | null;
   inventory: string[];
   payphoneTokens: number;
   saveSummary: string | null;
   currentNodeId: string;
-  // Diálogo
   isInDialogueMode: boolean;
   activeNpcDialogueId: string | null;
   npcMemories: Record<string, NpcMemory>;
-  // Cutscenes
   hasSeenIntroCutscene: boolean;
+  hasCreatedCharacter: boolean;
+  playerProfile: PlayerProfile | null;
 };
 
 export type StoryOption = {
@@ -77,13 +83,23 @@ export type StoryOption = {
   sanityCost?: number;
 };
 
+export type FreeActionContext = {
+  hiddenItems: string[];
+  possibleActions: string[];
+  forbiddenActions: string[];
+  environmentDetails: string;
+  hiddenPaths?: { description: string; nodeId: string }[];
+};
+
 export type StoryNode = {
   id: string;
   location: string;
+  image?: string; // e.g. "mecanica.jpg"
   baseDescription: string;
   orelhaoVisivel: boolean;
   options: StoryOption[];
   allowFourthOption: boolean;
   fourthOptionConstraints: string;
   npcsPresentes: string[]; // IDs dos NPCs presentes fisicamente nesta cena
+  freeActionContext?: FreeActionContext;
 };

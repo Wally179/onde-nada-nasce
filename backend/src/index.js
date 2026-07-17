@@ -5,6 +5,7 @@ const db = require('./db');
 
 const authRoutes = require('./routes/auth');
 const savesRoutes = require('./routes/saves');
+const freeActionRoutes = require('./routes/freeAction');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -21,6 +22,7 @@ db.initDb();
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/saves', savesRoutes);
+app.use('/api/free-action', freeActionRoutes);
 
 // Health check endpoint for Render
 app.get('/health', (req, res) => {

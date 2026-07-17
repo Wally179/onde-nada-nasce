@@ -49,4 +49,16 @@ router.put('/', authenticateToken, async (req, res) => {
   }
 });
 
+// Delete user's save game
+router.delete('/', authenticateToken, async (req, res) => {
+  try {
+    const userId = req.user.userId;
+    await db.query('DELETE FROM saves WHERE user_id = $1', [userId]);
+    res.json({ message: 'Save deleted successfully.' });
+  } catch (err) {
+    console.error('Error deleting save:', err);
+    res.status(500).json({ error: 'Server error deleting save.' });
+  }
+});
+
 module.exports = router;

@@ -18,6 +18,8 @@ interface ActionPanelProps {
   loading: boolean;
   onOptionClick: (nextId: string) => void;
   onFreeAction: (text: string) => void;
+  freeActionAttemptsRemaining: number;
+  freeActionMaxAttempts: number;
 }
 
 export default function ActionPanel({
@@ -26,6 +28,8 @@ export default function ActionPanel({
   loading,
   onOptionClick,
   onFreeAction,
+  freeActionAttemptsRemaining,
+  freeActionMaxAttempts,
 }: ActionPanelProps) {
   return (
     <div className="p-4 bg-[#121212] border-t-2 border-[#2d372b] flex flex-col gap-4">
@@ -43,6 +47,8 @@ export default function ActionPanel({
         <FreeActionInput
           onSubmit={onFreeAction}
           loading={loading}
+          attemptsRemaining={freeActionAttemptsRemaining}
+          maxAttempts={freeActionMaxAttempts}
         />
       )}
     </div>
