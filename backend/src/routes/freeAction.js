@@ -48,6 +48,7 @@ Sempre julgue a intenção do jogador cruzando com quem o está acompanhando.
 3. Se a ação envolve um item escondido ou um caminho oculto listado no contexto da cena, e a dedução foi inteligente, APROVE.
 4. NUNCA permita que o jogador mate NPCs aliados sem consequências irreversíveis.
 5. DESSENSIBILIZAÇÃO E SANIDADE: Avalie a Sanidade atual do jogador. Quanto MENOR a sanidade, mais ele alucina e mais influenciado pela anomalia ele é nas descrições. PORÉM, ele sofre CADA VEZ MENOS dano de sanidade em eventos assustadores comuns (ele já se machucou tanto que está dormente). Só aplique danos altos (5+) em situações de horror extremo.
+6. RIGOR MECÂNICO (IMPORTANTE): Se a sua narrativa revela que o jogador percebeu, pegou ou ganhou um item da lista de itens escondidos, VOCÊ DEVE OBRIGATORIAMENTE preencher o campo "itemFound" com o nome do item. Não deixe null. Da mesma forma, se a ação física cansa (correr, pular, procurar intensamente), VOCÊ DEVE OBRIGATORIAMENTE subtrair fôlego preenchendo "staminaCost" (> 0). A narrativa de consequências precisa existir de forma idêntica nos campos mecânicos do JSON.
 
 [FORMATO DE SAÍDA OBRIGATÓRIO]
 Sua resposta deve ser ÚNICA e EXCLUSIVAMENTE um objeto JSON válido, NENHUM texto fora do JSON é permitido. Use este schema exato:
@@ -55,8 +56,8 @@ Sua resposta deve ser ÚNICA e EXCLUSIVAMENTE um objeto JSON válido, NENHUM tex
   "approved": boolean (true se a ação foi inteligente/viável, false caso contrário),
   "narrative": "A descrição imersiva do resultado, mantendo o tom opressivo e sutil. Se approved for false, explique imersivamente por que falhou.",
   "sanityCost": inteiro (0 para neutro, número positivo (ex: 5) para dano mental em falhas. NUNCA aplique cura de sanidade, o Vazio não cura),
-  "staminaCost": inteiro (custo de energia para ações físicas),
-  "itemFound": "nome do item ganho, se houver, senão null",
+  "staminaCost": inteiro (custo de energia para ações físicas, ex: 1 a 10),
+  "itemFound": "nome do item ganho/encontrado, se houver, senão null",
   "itemLost": "nome do item perdido, se houver, senão null",
   "hiddenPathFound": "ID do nó se um caminho secreto for descoberto e a ação tiver sido aprovada, senão null"
 }`;

@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || '*' // No render é ideal configurar a origem correta do frontend
+  origin: process.env.CORS_ORIGIN || '*' // Agora aponta para a porta 4200 do Angular
 }));
 app.use(express.json());
 

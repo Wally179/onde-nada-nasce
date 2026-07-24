@@ -1,0 +1,249 @@
+{
+  "nodes": {
+    "cap1_republica_start": {
+      "id": "cap1_republica_start",
+      "location": "República no Butantã",
+      "baseDescription": "Seu quarto está uma bagunça de livros de História e embalagens vazias. Na TV da sala, o noticiário chia sobre a transição para o Plano Real e o sequestro do pai do Romário. A luz amarela do poste ilumina a carta da sua tia-avó Maria sobre a mesa. O papel antigo exala um cheiro de rio e ferrugem. As palavras finais, 'terá que temer nada', parecem pulsar na sua mente. A ideia de ir sozinho dói, mas talvez seja o único jeito de manter a segurança de vocês três.",
+      "orelhaoVisivel": false,
+      "npcsPresentes": [],
+      "options": [
+        {
+          "id": "A",
+          "text": "Fazer as malas e ir sozinho, sem envolver ninguém.",
+          "nextId": "cap1_rodoviaria_sozinho"
+        },
+        {
+          "id": "B",
+          "text": "Ir ao quarto da 'Mecânica' pedir que ela vá com você.",
+          "nextId": "cap1_dialogo_mecanica"
+        },
+        {
+          "id": "C",
+          "text": "Ir até a sala avisar o 'Muro' que você precisa dele.",
+          "nextId": "cap1_dialogo_muro"
+        },
+        {
+          "id": "D",
+          "text": "Amassar a carta, ignorar o aviso e tentar dormir.",
+          "nextId": "cap1_republica_ignorar"
+        }
+      ],
+      "allowFourthOption": true,
+      "fourthOptionConstraints": "O jogador deve decidir se parte sozinho ou busca ajuda. O Mestre (IA) sabe que existe um histórico profundo (e possivelmente romântico/poliamoroso) entre eles, mas a IA DEVE ESPELHAR O TOM DO JOGADOR. Se o jogador for prático e distante, narre lealdade fraternal. Se o jogador for afetuoso, use o 'show, don't tell' para narrar romance sutil.",
+      "freeActionContext": {
+        "hiddenItems": ["moeda de 1 real esquecida debaixo da cama", "canivete suíço no fundo da gaveta da mesa"],
+        "possibleActions": ["vasculhar o quarto", "ler a carta da tia novamente", "olhar pela janela", "verificar debaixo da cama", "abrir as gavetas", "comer algo das embalagens"],
+        "forbiddenActions": ["usar magia", "voar", "teletransportar", "hackear computador", "usar celular"],
+        "environmentDetails": "Quarto de república universitária bagunçado. Uma cama de solteiro (onde os três já dormiram espremidos diversas vezes), mesa com abajur e pilhas de livros de História, gavetas, janela com vista para a rua."
+      }
+    },
+    "cap1_republica_ignorar": {
+      "id": "cap1_republica_ignorar",
+      "location": "Quarto da República - O Vazio",
+      "baseDescription": "Você amassa a carta e fecha os olhos. O erro é imediato. As letras dos seus livros de História começam a sumir. As sombras do quarto se alongam de forma antinatural, rastejando pelas paredes. O som da TV na sala 'desliga' em sua mente. O Vazio pune a negação. O ar fica denso, esmagando seus pulmões. Você levanta em pânico, percebendo que precisa ir a Botucatu antes que aquilo devore sua mente.",
+      "orelhaoVisivel": false,
+      "npcsPresentes": [],
+      "options": [
+        {
+          "id": "A",
+          "text": "Pegar as malas desesperadamente e correr para a Rodoviária.",
+          "nextId": "cap1_rodoviaria_sozinho"
+        }
+      ],
+      "allowFourthOption": true,
+      "fourthOptionConstraints": "Ação estritamente punitiva. O jogador sofreu dano de Sanidade por tentar ignorar a narrativa. O sistema deve narrar terror psicológico cósmico se ele tentar resistir novamente.",
+      "freeActionContext": {
+        "hiddenItems": [],
+        "possibleActions": ["chorar", "correr", "rezar"],
+        "forbiddenActions": ["voltar a dormir", "ignorar as sombras"],
+        "environmentDetails": "O quarto agora parece um ambiente hostil e claustrofóbico. A sanidade do jogador acabou de ser arranhada."
+      }
+    },
+    "cap1_dialogo_mecanica": {
+      "id": "cap1_dialogo_mecanica",
+      "location": "Quarto da Mecânica",
+      "image": "mecanica.jpg",
+      "baseDescription": "O quarto cheira a perfume doce e solda de estanho. Ela tira os óculos de proteção.\n\nVOCÊ: Entrega a carta.\n\nEla lê, estala o chiclete e ergue uma sobrancelha.\n\nMECÂNICA: 'Sua tia pirou de vez. Temer nada? Isso cheira a demência senil.'\n\nVOCÊ: Explica que precisa ir.\n\nEla te analisa por alguns segundos, a fachada cética quebrando. Ela se aproxima, tocando seu braço com firmeza. Os olhos escuros suavizam.\n\nMECÂNICA: 'Você não dura um dia sozinho no mato... E eu não vou te deixar ir com a cabeça desse jeito. Me dá cinco minutos pra arrumar a mochila.'",
+      "orelhaoVisivel": false,
+      "npcsPresentes": ["mecanica"],
+      "options": [
+        {
+          "id": "A",
+          "text": "Agradecer com um aceno firme, mantendo o foco na missão, e ir para a Rodoviária.",
+          "nextId": "cap1_rodoviaria_mecanica"
+        },
+        {
+          "id": "B",
+          "text": "Dar um sorriso aliviado e feliz pela companhia, e ir para a Rodoviária.",
+          "nextId": "cap1_rodoviaria_mecanica"
+        }
+      ],
+      "allowFourthOption": true,
+      "fourthOptionConstraints": "O jogador dita o tom. A IA deve espelhar a ação dele. Se ele agir de forma platônica/urgente, narre uma amizade leal e cética. Se ele for carinhoso (usando a 4ª Opção), responda com intimidade velada e toques sutis. Nunca rotule a relação.",
+      "freeActionContext": {
+        "hiddenItems": [],
+        "possibleActions": ["beijar ela", "abraçar apertado", "fazer carinho", "agradecer distante", "apressar ela"],
+        "forbiddenActions": ["recusar a ajuda dela agora", "atacar"],
+        "environmentDetails": "Quarto da mecânica, ferramentas, clima de tensão que pode pender para a camaradagem ou para o romance dependendo do jogador."
+      }
+    },
+    "cap1_dialogo_muro": {
+      "id": "cap1_dialogo_muro",
+      "location": "Sala da República",
+      "image": "sala.jpg",
+      "baseDescription": "Ele está terminando uma série de flexões na sala.\n\nMURO: 'E aí... Tá pálido', ele diz, percebendo no ato que algo está errado.\n\nVOCÊ: Mostra a carta, tenso.\n\nEle franze a testa, ignorando a poesia macabra, focando apenas no seu estado de alerta.\n\nMURO: 'Que papo de maluco. Essa velha tá te ameaçando?'\n\nVOCÊ: Diz que precisa ir descobrir.\n\nSem questionar a lógica, ele levanta de um salto. O corpo ainda quente do treino diminui o espaço entre vocês.\n\nMURO: 'Fechou. Ninguém mexe com os nossos. Vou pegar minha jaqueta.'",
+      "orelhaoVisivel": false,
+      "npcsPresentes": ["ed_fisica"],
+      "options": [
+        {
+          "id": "A",
+          "text": "Dar um tapa no ombro dele, selando a parceria, e partir para a Rodoviária.",
+          "nextId": "cap1_rodoviaria_muro"
+        },
+        {
+          "id": "B",
+          "text": "abraçar ele num momento de vulnerabilidade e alívio, e partir.",
+          "nextId": "cap1_rodoviaria_muro"
+        }
+      ],
+      "allowFourthOption": true,
+      "fourthOptionConstraints": "O jogador controla a proximidade. A IA deve narrar baseada no input. Se o jogador escolher distância/camaradagem (arquétipo 'bro'), a IA descreve lealdade fraternal. Se o jogador escolher contato íntimo/vulnerável na 4ª Opção, a IA responde com proteção devota e possessiva. Não use rótulos.",
+      "freeActionContext": {
+        "hiddenItems": [],
+        "possibleActions": ["tocar o rosto dele", "abraçar forte", "bater no ombro", "agradecer seco"],
+        "forbiddenActions": ["desistir de ir"],
+        "environmentDetails": "Sala bagunçada, TV ligada, cheiro de suor. A atmosfera é de proteção incondicional que se molda à vontade do jogador."
+      }
+    },
+    "cap1_rodoviaria_sozinho": {
+      "id": "cap1_rodoviaria_sozinho",
+      "location": "Terminal Rodoviário Tietê",
+      "baseDescription": "O terminal está um caos. Pessoas correndo, o noticiário na TV do bar fala repetidamente sobre o sequestro do pai do Romário. O peso de ter saído escondido, deixando-os para trás, te atinge. Em uma pilastra, há um telefone público amarelo brilhante, um Orelhão da Telesp. O ônibus para Botucatu sai em breve.",
+      "orelhaoVisivel": true,
+      "npcsPresentes": ["cambistas", "passageiros"],
+      "options": [
+        {
+          "id": "A",
+          "text": "(Tutorial) Gastar uma ficha, ligar para seu irmão caçula e deixar um relato de onde está indo.",
+          "nextId": "cap1_posto_gasolina"
+        },
+        {
+          "id": "B",
+          "text": "Encarar a fila das passagens ignorando o Orelhão.",
+          "nextId": "cap1_posto_gasolina"
+        }
+      ],
+      "allowFourthOption": true,
+      "fourthOptionConstraints": "O jogador está na rodoviária caótica. Está sozinho. Magia não existe. Ações que atrasem demais a viagem drenam sanidade.",
+      "freeActionContext": {
+        "hiddenItems": ["jornal dobrado no banco com manchete sobre desaparecimentos em Botucatu"],
+        "possibleActions": ["observar o noticiário na TV", "comprar um café", "verificar o horário do ônibus", "ir ao banheiro"],
+        "forbiddenActions": ["usar magia", "roubar alguém", "agredir passageiros", "usar celular"],
+        "environmentDetails": "Terminal Rodoviário do Tietê, anos 90. Barulho ensurdecedor, cheiro de diesel."
+      }
+    },
+    "cap1_rodoviaria_mecanica": {
+      "id": "cap1_rodoviaria_mecanica",
+      "location": "Terminal Rodoviário Tietê",
+      "baseDescription": "Você viajou para a rodoviária com a Mecânica. Em público, a postura dela é distante e vigilante na multidão, observando o ambiente enquanto masca chiclete. A TV fala sobre o sequestro do pai do Romário. Perto de um Orelhão da Telesp, ela murmura para você: 'Espero que essa tia seja rica mesmo'.",
+      "orelhaoVisivel": true,
+      "npcsPresentes": ["mecanica", "cambistas", "passageiros"],
+      "options": [
+        {
+          "id": "A",
+          "text": "(Tutorial) Gastar uma ficha, ligar para seu irmão caçula e deixar um relato.",
+          "nextId": "cap1_posto_gasolina"
+        },
+        {
+          "id": "B",
+          "text": "Pedir para ela usar sua sagacidade para furar a fila da passagem.",
+          "nextId": "cap1_posto_gasolina"
+        }
+      ],
+      "allowFourthOption": true,
+      "fourthOptionConstraints": "A IA deve manter a postura da Mecânica coerente com o nível de intimidade que o jogador estabeleceu no quarto. Em público (1994), ela é contida, mas se o jogador tentar contato afetuoso discreto, ela corresponderá de forma sutil. Se o jogador for apenas prático, ela será apenas uma aliada sagaz.",
+      "freeActionContext": {
+        "hiddenItems": ["jornal dobrado no banco com manchete sobre desaparecimentos em Botucatu"],
+        "possibleActions": ["pedir pra Mecânica furar a fila", "segurar a mão dela discretamente", "comprar um café", "vigiar as malas"],
+        "forbiddenActions": ["usar magia", "abandonar a Mecânica", "usar celular"],
+        "environmentDetails": "Caos da rodoviária, anos 90. Proteção e cumplicidade."
+      }
+    },
+    "cap1_rodoviaria_muro": {
+      "id": "cap1_rodoviaria_muro",
+      "location": "Terminal Rodoviário Tietê",
+      "baseDescription": "Você está na rodoviária com o Muro. Ele carrega as malas sem esforço, assumindo a postura de um guarda-costas estóico na multidão, nunca se afastando muito de você. Um Orelhão da Telesp está livre próximo ao guichê.",
+      "orelhaoVisivel": true,
+      "npcsPresentes": ["muro", "cambistas", "passageiros"],
+      "options": [
+        {
+          "id": "A",
+          "text": "(Tutorial) Gastar uma ficha, ligar para seu irmão caçula e deixar um relato.",
+          "nextId": "cap1_posto_gasolina"
+        },
+        {
+          "id": "B",
+          "text": "Pedir para o Muro usar sua presença para intimidar os cambistas e pegar a passagem.",
+          "nextId": "cap1_posto_gasolina"
+        }
+      ],
+      "allowFourthOption": true,
+      "fourthOptionConstraints": "A IA deve espelhar o tratamento do jogador. Em público (1994), o Muro age como um 'cão de guarda' ou irmão mais velho. Se o jogador flertar ou buscar contato íntimo oculto, ele corresponde com proteção possessiva e discreta. Se o jogador for prático, narre apenas a segurança da força bruta dele.",
+      "freeActionContext": {
+        "hiddenItems": ["jornal dobrado no banco com manchete sobre desaparecimentos em Botucatu"],
+        "possibleActions": ["pedir pro Muro abrir caminho", "tocar no braço dele para acalmá-lo", "comprar lanche"],
+        "forbiddenActions": ["usar magia", "abandonar o Muro", "brigar", "usar celular"],
+        "environmentDetails": "Caos na rodoviária. A imponência do parceiro oferece segurança."
+      }
+    },
+    "cap1_posto_gasolina": {
+      "id": "cap1_posto_gasolina",
+      "location": "Posto de Gasolina - Fronteira",
+      "baseDescription": "O ônibus deixa vocês em um posto de gasolina poeirento no início de uma estrada de terra batida. É o fim da linha. O cheiro de diesel se mistura com o ar abafado. Ao perguntar no balcão sobre uma carroça para a vila da Tia Maria, o vendedor para de limpar o balcão. O olhar dele esvazia completamente. Com movimentos robóticos e tom anestesiado, ele repete: 'Olha... não gostaria de ir lá, não. O carroceiro deixa vocês lá perto. Mas tem nada lá. Cês vão ver, tem nada lá.'",
+      "orelhaoVisivel": false,
+      "npcsPresentes": ["vendedor_posto", "carroceiro"],
+      "options": [
+        {
+          "id": "A",
+          "text": "Subir na carroça em silêncio, ignorando o comportamento bizarro.",
+          "nextId": "cap1_a_descida"
+        },
+        {
+          "id": "B",
+          "text": "Pressionar o vendedor: 'Como assim tem nada lá?'",
+          "nextId": "cap1_a_descida"
+        }
+      ],
+      "allowFourthOption": true,
+      "fourthOptionConstraints": "Qualquer tentativa de diálogo lógico com o vendedor falha. O cérebro dele está bloqueando o trauma do Vazio. Ele apenas repetirá 'Tem nada lá' em loop. A viagem de carroça é inevitável.",
+      "freeActionContext": {
+        "hiddenItems": [],
+        "possibleActions": ["observar o comportamento do npc", "tentar acalmar o npc", "entrar na carroça"],
+        "forbiddenActions": ["atacar o npc", "chamar polícia"],
+        "environmentDetails": "Fim de tarde. A transição entre o mundo normal e a anomalia do Vazio. O NPC está em estado de dissociação psicológica."
+      }
+    },
+    "cap1_a_descida": {
+      "id": "cap1_a_descida",
+      "location": "Estrada de Terra - Limite da Vila",
+      "baseDescription": "A carroça para abruptamente. O cavalo refuga, paralisado de terror, e o carroceiro faz um sinal frenético para que desçam. O sol cai de uma vez. A estrada de terra escurece. De repente, os sons dos grilos e do vento não apenas param, mas parecem deixar de existir. A ausência de estímulos esmaga seus tímpanos. O Vazio é absoluto. Apenas uma luz fraca brilha no fim da rua principal da vila abandonada.",
+      "orelhaoVisivel": false,
+      "npcsPresentes": [],
+      "options": [
+        {
+          "id": "A",
+          "text": "Dar o primeiro passo na escuridão em direção à vila. (Fim do Capítulo 1)",
+          "nextId": "cap2_start"
+        }
+      ],
+      "allowFourthOption": true,
+      "fourthOptionConstraints": "O ambiente suprime a ação. Tentar usar lanternas resulta na luz sendo 'engolida' pela escuridão. O jogador não pode voltar; o cavalo fugiu.",
+      "freeActionContext": {
+        "hiddenItems": [],
+        "possibleActions": ["dar as mãos ao companheiro", "respirar fundo", "caminhar para frente"],
+        "forbiddenActions": ["voltar para o posto", "fazer barulho alto"],
+        "environmentDetails": "Escuridão opressiva. O conceito de som e eco não funciona mais. O peso existencial drena a Sanidade gradualmente."
+      }
+    }
+  }
+}
